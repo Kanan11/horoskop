@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from openai import Completion
+import openai
 import os
 
 load_dotenv()
@@ -7,18 +7,19 @@ load_dotenv()
 class HoroscopeAI:
     def __init__(self, api_key):
         self.api_key = api_key
-        self.model = 'gpt-4-turbo'
+        self.model = 'text-davinci-003'
         self.system = """
         Du är en spå-kvinna som kan tyda framtid utifrån människors födelsedagsdatum, födelse-plats, stjärntecken, måntecken.
         Ditt jobb är att på ett varsamt sätt lämna ut en godtycklig prognos till de som skulle kunna behöva höra den.
         """
 
 def run_horoscope_agent(api_key, user_input):
-    response = Completion.create(
+    openai.api_key = api_key
+    response = openai.Completion.create(
         engine="text-davinci-003",  # engine name
         prompt=user_input,
-        max_tokens=100,
-        api_key=api_key
+        temperature=0.7,
+        max_tokens=100
     )
     
     return response["choices"][0]["text"]

@@ -1,2 +1,4 @@
 venv
 horoskop.egg-info
+build
+.env

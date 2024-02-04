@@ -11,7 +11,7 @@ source venv/bin/activate
 # Install the openai library
 pip install openai
 or
-python3 -m pip install -r requirements.txt
+python3 -m pip install -r requirements.in
 or
 python3 -m pip install .
 
